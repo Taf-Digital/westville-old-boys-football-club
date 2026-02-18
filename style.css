@@ -6,10 +6,23 @@
 }
 
 body {
+    background: linear-gradient(90deg, #0022ff 50%, #ff0000 50%);
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
     font-family: 'Montserrat', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #fff;
+}
+
+/* Ensure the training container is visible on the dark colors */
+.detail-header h1 {
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.detail-header .tagline {
+    color: #ffffff; /* Cyan for contrast */
+    text-align: center;
 }
 
 /* Navigation */
@@ -538,4 +551,133 @@ textarea { height: 100%; min-height: 150px; }
 .card {
     position: relative;
     z-index: 1;
+}
+
+/* Gallery Specific Styles */
+.gallery-grid {
+    display: grid;
+    /* This creates a 3-column grid that drops to 2 or 1 on smaller screens */
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); 
+    gap: 25px;
+    width: 100%;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item {
+    position: relative;
+    height: 300px; /* Uniform height for all items */
+    border-radius: 12px;
+    overflow: hidden;
+    border: 4px solid white;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This crops images perfectly without stretching them */
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-item .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 34, 255, 0.8), transparent);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .overlay {
+    opacity: 1;
+}
+
+
+.gallery-item .overlay span {
+    color: white;
+    font-weight: 800;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+/* Ensure the background matches the home page split */
+.split-bg {
+    background: linear-gradient(90deg, #0022ff 50%, #ff0000 50%) !important;
+    background-attachment: fixed;
+}
+
+/* Sticky Footer Setup */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Add this class to your main content sections (hero, community, etc) */
+main, section, .teams-wrapper, .detail-container {
+    flex: 1 0 auto;
+}
+
+/* Footer Styling */
+.main-footer {
+    flex-shrink: 0;
+    background-color: #1a1a1a;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    border-top: 4px solid #ee0000; /* Westville Red Accent */
+}
+
+.footer-club-name {
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.social-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 20px;
+}
+
+.social-logo {
+    width: 45px;
+    height: 45px;
+    border-radius: 8px; /* Smooths the edges of the square images */
+    object-fit: cover;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.social-logo:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 15px rgba(45, 226, 226, 0.5); /* Cyan glow on hover */
+}
+
+.footer-tagline {
+    font-size: 0.9rem;
+    font-style: italic;
+    opacity: 0.7;
+    margin-bottom: 10px;
+}
+
+.copyright {
+    font-size: 0.75rem;
+    opacity: 0.4;
 }
